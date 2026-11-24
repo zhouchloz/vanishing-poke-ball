@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Poké Ball Catch Challenge</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="clouds" aria-hidden="true"><div class="cloud c1"></div><div class="cloud c2"></div><div class="cloud c3"></div></div>
+<div class="wrap">
+  <header class="site-header">
+    <h1>Poké Ball Catch Challenge</h1>
+    <p>How well can you track a Poké Ball?</p>
+    <div class="ribbon"></div>
+  </header>
+
+  <section id="s-loading" class="screen">
+    <div class="card center"><h2>Getting the field ready…</h2><div class="progress"><div id="load-bar"></div></div><p class="hint" id="load-text">Loading</p></div>
+  </section>
+
+  <section id="s-nosession" class="screen">
+    <div class="card center"><h2>Almost ready!</h2><p class="lead">The challenge hasn't been set up on this computer yet.</p><p>Please let the researcher know.</p></div>
+  </section>
+
+  <section id="s-instructions" class="screen">
+    <div class="card">
+      <h2>Welcome to the Poké Ball Catch Challenge!</h2>
+      <p class="lead">You'll watch a Pokémon trainer perform a series of throws.</p>
+      <p><strong>Pay attention to both the Poké Ball and the trainer's behavior, especially where the trainer is looking.</strong></p>
+      <p>After each throw, you'll be asked where you last saw the Poké Ball.</p>
+      <p>Each animation plays only once, so watch carefully and respond based on what you actually saw, not where you think the ball should have gone.</p>
+      <p>There are no penalties for being unsure.</p>
+      <div class="center" style="margin-top:22px"><button class="btn" id="btn-start">Start Experiment</button></div>
+    </div>
+  </section>
+
+  <section id="s-practice-intro" class="screen">
+    <div class="card center">
+      <h2>Warm-up</h2>
+      <p class="lead" id="practice-intro-text">First, a short warm-up so you can get used to the game. Warm-up rounds don't count.</p>
+      <div style="margin-top:18px"><button class="btn blue" id="btn-practice-go">Begin Warm-up</button></div>
+    </div>
+  </section>
+
+  <section id="s-main-intro" class="screen">
+    <div class="card center">
+      <h2 id="main-intro-title">Warm-up complete <span class="star">★</span></h2>
+      <p class="lead">Now the 10 scored rounds begin. Answer based on what you actually saw.</p>
+      <p class="notice" id="reminder"><strong>Remember: Watch the ball AND the trainer's eyes and head movements.</strong></p>
+      <div style="margin-top:18px"><button class="btn" id="btn-main-go">Begin Round 1</button></div>
+    </div>
+  </section>
+
+  <section id="s-ready" class="screen">
+    <div class="card center">
+      <div class="round-label" id="round-label">Round 1 of 10</div>
+      <div class="round-sub" id="round-sub">Get ready to watch closely.</div>
+      <button class="btn" id="btn-watch">Watch the Throw</button>
+    </div>
+  </section>
+
+  <section id="s-stage" class="screen">
+    <div class="stage"><canvas id="stage-canvas" aria-label="Animation"></canvas></div>
+  </section>
+
+  <section id="s-response" class="screen">
+    <div class="card" style="max-width:940px">
+      <div class="resp-grid">
+        <div>
+          <div class="picker" id="picker"><img id="still" alt="Scene"><div class="dot" id="dot"></div></div>
+        </div>
+        <div>
+          <div class="q">
+            <h3>1. Where did you see the Poké Ball reach its highest visible point?</h3>
+            <p class="help">Click on the picture to mark the highest point where you remember actually seeing the ball. You can click again to change your answer.</p>
+            <label class="check"><input type="checkbox" id="unsure"> I'm not sure</label>
+          </div>
+          <div class="q">
+            <h3>2. Did you see the Poké Ball reach the highest point of its flight?</h3>
+            <div class="choices" id="q2">
+              <button class="choice" data-v="Yes">Yes</button><button class="choice" data-v="No">No</button><button class="choice" data-v="Unsure">Unsure</button>
+            </div>
+          </div>
+          <div class="q" id="q3wrap">
+            <h3>3. How confident are you in your answers for this throw?</h3>
+            <div class="choices" id="q3">
+              <button class="choice" data-v="1">1</button><button class="choice" data-v="2">2</button><button class="choice" data-v="3">3</button><button class="choice" data-v="4">4</button><button class="choice" data-v="5">5</button>
+            </div>
+            <div class="scale-labels"><span>1 = not at all</span><span>5 = very confident</span></div>
+          </div>
+          <div class="submit-row"><span class="hint" id="submit-hint">Please answer all questions.</span><button class="btn" id="btn-submit" disabled>Submit</button></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="s-debrief-q" class="screen">
+    <div class="card">
+      <h2>All rounds complete <span class="star">★</span></h2>
+      <p>Before we finish, a few quick questions. Please answer in your own words.</p>
+      <div class="q"><h3>What, if anything, did you notice about the throws?</h3><textarea id="dq1"></textarea></div>
+      <div class="q"><h3>What do you think this experiment was investigating?</h3><textarea id="dq2"></textarea></div>
+      <div id="dq-extra"></div>
+      <div class="submit-row"><span class="hint">You can leave a box blank if you have nothing to add.</span><button class="btn" id="btn-dq">Continue</button></div>
+    </div>
+  </section>
+
+  <section id="s-debrief" class="screen">
+    <div class="card" id="debrief-card"><h2>Thank you for playing!</h2><p class="hint">Loading…</p></div>
+  </section>
+</div>
+<script src="js/stim_public.js"></script>
+<script src="js/still_data.js"></script>
+<script src="js/storage.js"></script>
+<script src="js/core.js"></script>
+<script src="js/public_session.js"></script>
+<script src="js/player.js"></script>
+<script src="js/participant.js"></script>
+</body>
+</html>
