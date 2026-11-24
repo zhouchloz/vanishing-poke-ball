@@ -1,0 +1,5 @@
+window.PBCC_DEBRIEF_HTML = '<h2>Thank you for playing!</h2>' +
+ '<p class="lead">Some Poké Balls disappeared before completing their flight. We were investigating whether the trainer\'s gaze and expectations about familiar throwing actions affect where people remember seeing the ball.</p>' +
+ '<p>The real throws and the vanishing throws were intentionally designed to look very similar. In some vanishing throws the trainer kept looking up along the ball\'s path; in others he looked at his empty hand. This version used a light, sky-blue ball to see whether a ball that is a little harder to see changes how people remember its path. Human perception naturally fills in what we expect to happen in familiar actions, so whatever you noticed (or didn\'t notice) is exactly the kind of information this study is about.</p>' +
+ '<p>There were no right or wrong answers, and your responses are very helpful. Please don\'t share the purpose with anyone who might take part later.</p>' +
+ '<p class="center" style="margin-top:18px"><strong>You\'re all done — thank you!</strong></p>';
